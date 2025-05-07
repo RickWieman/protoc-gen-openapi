@@ -485,30 +485,6 @@ components:
            endpoint and is also used during header processing
            (x-envoy-upstream-canary) and for stats purposes.
          [#next-major-version: move to type/metadata/v2]
-    envoy.config.core.v3.Metadata.FilterMetadataEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          title: key
-        value:
-          allOf:
-            - $ref: '#/components/schemas/google.protobuf.Struct'
-          title: value
-      title: FilterMetadataEntry
-      additionalProperties: false
-    envoy.config.core.v3.Metadata.TypedFilterMetadataEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          title: key
-        value:
-          allOf:
-            - $ref: '#/components/schemas/google.protobuf.Any'
-          title: value
-      title: TypedFilterMetadataEntry
-      additionalProperties: false
     envoy.config.core.v3.Node:
       type: object
       anyOf:
@@ -625,18 +601,6 @@ components:
          management server, which may use this identifier to distinguish per Envoy
          configuration for serving.
          [#next-free-field: 13]
-    envoy.config.core.v3.Node.DynamicParametersEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          title: key
-        value:
-          allOf:
-            - $ref: '#/components/schemas/xds.core.v3.ContextParams'
-          title: value
-      title: DynamicParametersEntry
-      additionalProperties: false
     envoy.config.core.v3.Pipe:
       type: object
       properties:
@@ -855,17 +819,6 @@ components:
          gRPC stream actually entails a message for each type_url, each with its own
          initial_resource_versions.
          [#next-free-field: 10]
-    envoy.service.discovery.v3.DeltaDiscoveryRequest.InitialResourceVersionsEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          title: key
-        value:
-          type: string
-          title: value
-      title: InitialResourceVersionsEntry
-      additionalProperties: false
     envoy.service.discovery.v3.DeltaDiscoveryResponse:
       type: object
       properties:
@@ -1259,17 +1212,6 @@ components:
       title: ResourceLocator
       additionalProperties: false
       description: Specifies a resource to be subscribed to.
-    envoy.service.discovery.v3.ResourceLocator.DynamicParametersEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          title: key
-        value:
-          type: string
-          title: value
-      title: DynamicParametersEntry
-      additionalProperties: false
     envoy.service.discovery.v3.ResourceName:
       type: object
       properties:
@@ -1418,18 +1360,6 @@ components:
          with the proto support for the language.
 
          The JSON representation for `Struct` is JSON object.
-    google.protobuf.Struct.FieldsEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          title: key
-        value:
-          allOf:
-            - $ref: '#/components/schemas/google.protobuf.Value'
-          title: value
-      title: FieldsEntry
-      additionalProperties: false
     google.protobuf.Value:
       oneOf:
         - type: "null"
@@ -1501,17 +1431,6 @@ components:
 
          `xds.resource.listening_address`: The value is "IP:port" (e.g. "10.1.1.3:8080") which is
            the listening address of a Listener. Used in a Listener resource query.
-    xds.core.v3.ContextParams.ParamsEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          title: key
-        value:
-          type: string
-          title: value
-      title: ParamsEntry
-      additionalProperties: false
     connect-protocol-version:
       type: number
       title: Connect-Protocol-Version

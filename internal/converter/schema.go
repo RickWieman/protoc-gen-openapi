@@ -128,7 +128,9 @@ func (st *State) CollectMessage(referral string, tt protoreflect.MessageDescript
 	messages := tt.Messages()
 	for i := 0; i < messages.Len(); i++ {
 		message := messages.Get(i)
-		st.CollectMessage(string(message.FullName()), message)
+		if !message.IsMapEntry() {
+			st.CollectMessage(string(message.FullName()), message)
+		}
 	}
 }
 
@@ -137,7 +139,7 @@ func (st *State) CollectField(tt protoreflect.FieldDescriptor) {
 		return
 	}
 	st.CollectEnum(tt.Enum())
-	if tt.Message() != nil {
+	if tt.Message() != nil && !tt.IsMap() {
 		st.CollectMessage(string(tt.FullName()), tt.Message())
 	}
 

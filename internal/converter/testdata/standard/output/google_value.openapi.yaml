@@ -146,18 +146,6 @@ components:
          with the proto support for the language.
 
          The JSON representation for `Struct` is JSON object.
-    google.protobuf.Struct.FieldsEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          title: key
-        value:
-          allOf:
-            - $ref: '#/components/schemas/google.protobuf.Value'
-          title: value
-      title: FieldsEntry
-      additionalProperties: false
     google.protobuf.Value:
       oneOf:
         - type: "null"
